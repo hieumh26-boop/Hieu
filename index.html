@@ -3,79 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .countdown {
-            font-size: 2rem;
-            font-weight: bold;
+    <title>Landing Page Bán Hàng</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                        }
+                    }
+                }
+            }
         }
-    </style>
+    </script>
 </head>
-<body class="bg-white">
+<body class="bg-gray-50 text-gray-800 font-sans pb-20 md:pb-0">
 
-    <!-- Countdown Timer -->
-    <div class="bg-red-500 text-white text-center p-4">
-        <div class="countdown" id="countdown">15:00</div>
+    <!-- BÀI 2: Đồng hồ đếm ngược 15 phút cố định/nổi bật đầu trang -->
+    <div class="bg-brand-600 text-white text-center py-2 px-4 sticky top-0 z-40 shadow-md">
+        <p class="text-xs md:text-sm font-semibold flex items-center justify-center gap-2">
+            <span>🔥 ƯU ĐÃI KẾT THÚC SAU:</span>
+            <span id="countdown" class="bg-white text-brand-600 font-bold px-2 py-0.5 rounded text-sm md:text-base">15:00</span>
+        </p>
     </div>
 
-    <!-- Hero Section -->
-    <section class="flex flex-col md:flex-row items-center p-8 md:p-16">
-        <div class="md:w-1/2">
-            <span class="bg-yellow-500 text-white p-2 rounded-md">Hot Sale</span>
-            <h1 class="text-4xl font-bold text-[Tên màu] mt-4">Tiêu đề Giật Gân!</h1>
-            <p class="text-lg text-gray-600 mt-2">Phụ đề ngắn và hấp dẫn.</p>
-            <a href="#" class="bg-blue-500 text-white px-6 py-3 mt-6 rounded-lg inline-block">Đặt hàng ngay</a>
-            <div class="mt-8">
-                <span class="text-yellow-500">⭐️⭐️⭐️⭐️⭐️</span>
-                <p class="text-gray-600">(1.000+ khách hàng đã đánh giá)</p>
+    <!-- BÀI 1: Hero Section & Social Proof -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+        <!-- Bố cục: 1 cột trên Mobile, 2 cột trên Desktop (Chữ bên trái, ảnh bên phải) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            
+            <!-- Cột trái: Nội dung chữ -->
+            <div class="flex flex-col items-start space-y-4 md:space-y-6">
+                <!-- Thẻ Badge Hot Sale -->
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 uppercase tracking-wide border border-amber-300">
+                    🔥 Hot Sale - Bán Chạy Nhất
+                </span>
+
+                <!-- Tiêu đề giật gân (Mobile <= 24px theo yêu cầu Bài 3, Desktop to hơn) -->
+                <h1 class="text-[22px] sm:text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+                    Giải Pháp Đột Phá Cho Nhu Cầu Của Bạn Từ Thương Hiệu [Tên sản phẩm]
+                </h1>
+
+                <!-- Phụ đề ngắn -->
+                <p class="text-sm md:text-lg text-gray-600 leading-relaxed">
+                    Sở hữu ngay sản phẩm chất lượng cao với ưu đãi cực shock giảm 30%. Cam kết hàng chính hãng, giao hàng tận nơi toàn quốc.
+                </p>
+
+                <!-- Khối đánh giá 5 sao từ 1.000+ khách hàng -->
+                <div class="flex items-center gap-3 py-2 border-y border-gray-200 w-full sm:w-auto">
+                    <div class="flex text-amber-400 text-base md:text-lg">
+                        ★ ★ ★ ★ ★
+                    </div>
+                    <div class="text-xs md:text-sm text-gray-600">
+                        <span class="font-bold text-gray-900">4.9/5</span> từ <span class="font-bold text-gray-900">1.000+</span> khách hàng hài lòng
+                    </div>
+                </div>
+
+                <!-- Nút CTA chính -->
+                <a href="#order-form" class="w-full sm:w-auto text-center bg-brand-600 hover:bg-brand-700 text-white font-bold text-base md:text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                    Đặt hàng ngay
+                </a>
             </div>
-        </div>
-        <div class="md:w-1/2 mt-8 md:mt-0">
-            <img src="link-to-your-image.jpg" alt="Tên sản phẩm" class="rounded-lg shadow-lg">
+
+            <!-- Cột phải: Hình ảnh sản phẩm -->
+            <div class="w-full flex justify-center">
+                <div class="relative w-full max-w-md md:max-w-none">
+                    <img src="https://via.placeholder.com/600x500?text=Anh+San+Pham" alt="Sản phẩm" class="w-full h-auto rounded-2xl shadow-2xl object-cover">
+                    <span class="absolute top-4 right-4 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                        -30% OFF
+                    </span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Order Form -->
-    <div class="p-8">
-        <h2 class="text-2xl font-bold">Đặt hàng ngay!</h2>
-        <form id="orderForm" class="mt-4">
-            <input type="text" placeholder="Họ tên" class="border p-2 w-full mb-4" required>
-            <input type="tel" placeholder="Số điện thoại" class="border p-2 w-full mb-4" required>
-            <input type="text" placeholder="Địa chỉ" class="border p-2 w-full mb-4" required>
-            <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg">MUA NGAY - GIẢM 30%</button>
-        </form>
+    <!-- BÀI 2: Form đặt hàng ở cuối trang -->
+    <section id="order-form" class="bg-white py-12 md:py-16 border-t border-gray-200">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+                <h2 class="text-xl md:text-2xl font-bold text-center text-gray-900 mb-2">
+                    THÔNG TIN ĐẶT HÀNG
+                </h2>
+                <p class="text-xs md:text-sm text-center text-gray-500 mb-6">
+                    Điền thông tin bên dưới để nhận ngay ưu đãi 30%
+                </p>
+
+                <form id="checkoutForm" onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                    <div>
+                        <label for="fullName" class="block text-xs font-semibold text-gray-700 uppercase mb-1">Họ và tên</label>
+                        <input type="text" id="fullName" required placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm outline-none transition">
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-xs font-semibold text-gray-700 uppercase mb-1">Số điện thoại</label>
+                        <input type="tel" id="phone" required placeholder="0901234567" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm outline-none transition">
+                    </div>
+
+                    <div>
+                        <label for="address" class="block text-xs font-semibold text-gray-700 uppercase mb-1">Địa chỉ nhận hàng</label>
+                        <textarea id="address" rows="3" required placeholder="Số nhà, tên đường, phường/xã, quận/huyện..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm outline-none transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-base md:text-lg py-4 rounded-xl shadow-md transition transform active:scale-95">
+                        MUA NGAY - GIẢM 30%
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- BÀI 3: Thanh Sticky CTA cho Mobile ở đáy màn hình -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 shadow-2xl z-40 md:hidden">
+        <a href="#order-form" class="block w-full bg-brand-600 text-white text-center font-bold py-3 rounded-lg shadow-md text-sm">
+            Đặt hàng ngay
+        </a>
     </div>
 
-    <!-- Sticky CTA -->
-    <div class="fixed bottom-0 left-0 right-0 bg-blue-500 text-white p-4 text-center md:hidden">
-        <a href="#" class="block text-lg font-bold">Đặt hàng ngay</a>
+    <!-- BÀI 2: Modal Thông báo Cảm ơn -->
+    <div id="thankYouModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl transform transition-all scale-100">
+            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                ✓
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2" id="modalMessage">
+                Cảm ơn [Tên]!
+            </h3>
+            <p class="text-sm text-gray-600 mb-6">
+                Đơn hàng đã được ghi nhận. Bộ phận chăm sóc khách hàng sẽ liên hệ với bạn trong thời gian sớm nhất.
+            </p>
+            <button onclick="closeModal()" class="w-full bg-gray-900 hover:bg-black text-white font-semibold py-2.5 rounded-lg text-sm transition">
+                Đóng
+            </button>
+        </div>
     </div>
 
+    <!-- JavaScript Xử lý Logic -->
     <script>
-        // Countdown Timer Logic
-        let timeLeft = 900; // 15 minutes
+        // 1. Logic Đồng hồ đếm ngược 15 phút
+        let duration = 15 * 60; // 15 phút chuyển thành giây
         const countdownElement = document.getElementById('countdown');
+
         const timer = setInterval(() => {
-            if (timeLeft <= 0) {
+            const minutes = Math.floor(duration / 60);
+            const seconds = duration % 60;
+
+            countdownElement.textContent = 
+                `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (--duration < 0) {
                 clearInterval(timer);
-                countdownElement.innerHTML = "Hết thời gian!";
-            } else {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                countdownElement.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                timeLeft--;
+                countdownElement.textContent = "00:00";
             }
         }, 1000);
 
-        // Order Form Submission
-        document.getElementById('orderForm').addEventListener('submit', function(event) {
+        // 2. Logic Xử lý Form Đặt Hàng & Hiển thị Modal
+        function handleOrderSubmit(event) {
             event.preventDefault();
-            const name = this[0].value;
-            alert(`Cảm ơn ${name}! Đơn hàng đã được ghi nhận.`);
-            this.reset();
-        });
-    </script>
 
+            const fullNameInput = document.getElementById('fullName');
+            const name = fullNameInput.value.trim();
+
+            // Cập nhật tên vào Modal
+            document.getElementById('modalMessage').textContent = `Cảm ơn ${name}! Đơn hàng đã được ghi nhận.`;
+
+            // Hiển thị Modal
+            document.getElementById('thankYouModal').classList.remove('hidden');
+
+            // Reset toàn bộ ô nhập liệu
+            document.getElementById('checkoutForm').reset();
+        }
+
+        // 3. Đóng Modal
+        function closeModal() {
+            document.getElementById('thankYouModal').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
