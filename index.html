@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Countdown Timer -->
+    <div class="bg-red-500 text-white text-center p-4">
+        <div class="countdown" id="countdown">15:00</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="flex flex-col md:flex-row items-center p-8 md:p-16">
+        <div class="md:w-1/2">
+            <span class="bg-yellow-500 text-white p-2 rounded-md">Hot Sale</span>
+            <h1 class="text-4xl font-bold text-[Tên màu] mt-4">Tiêu đề Giật Gân!</h1>
+            <p class="text-lg text-gray-600 mt-2">Phụ đề ngắn và hấp dẫn.</p>
+            <a href="#" class="bg-blue-500 text-white px-6 py-3 mt-6 rounded-lg inline-block">Đặt hàng ngay</a>
+            <div class="mt-8">
+                <span class="text-yellow-500">⭐️⭐️⭐️⭐️⭐️</span>
+                <p class="text-gray-600">(1.000+ khách hàng đã đánh giá)</p>
+            </div>
+        </div>
+        <div class="md:w-1/2 mt-8 md:mt-0">
+            <img src="link-to-your-image.jpg" alt="Tên sản phẩm" class="rounded-lg shadow-lg">
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <div class="p-8">
+        <h2 class="text-2xl font-bold">Đặt hàng ngay!</h2>
+        <form id="orderForm" class="mt-4">
+            <input type="text" placeholder="Họ tên" class="border p-2 w-full mb-4" required>
+            <input type="tel" placeholder="Số điện thoại" class="border p-2 w-full mb-4" required>
+            <input type="text" placeholder="Địa chỉ" class="border p-2 w-full mb-4" required>
+            <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg">MUA NGAY - GIẢM 30%</button>
+        </form>
+    </div>
+
+    <!-- Sticky CTA -->
+    <div class="fixed bottom-0 left-0 right-0 bg-blue-500 text-white p-4 text-center md:hidden">
+        <a href="#" class="block text-lg font-bold">Đặt hàng ngay</a>
+    </div>
+
+    <script>
+        // Countdown Timer Logic
+        let timeLeft = 900; // 15 minutes
+        const countdownElement = document.getElementById('countdown');
+        const timer = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                countdownElement.innerHTML = "Hết thời gian!";
+            } else {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                countdownElement.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                timeLeft--;
+            }
+        }, 1000);
+
+        // Order Form Submission
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = this[0].value;
+            alert(`Cảm ơn ${name}! Đơn hàng đã được ghi nhận.`);
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
